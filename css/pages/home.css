@@ -11,3 +11,105 @@
   margin-top: 40px;
 }
 */ 
+
+/* ================================ HERO ================================ */
+.hero {
+  background: linear-gradient(180deg, var(--verde-oliva), var(--preto-profundo));
+  color: var(--branco-quente);
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: var(--vermelho-vinho);
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0 auto 2.2rem;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* BOTÕES HERO */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ================================ STATS ================================ */
+.stats {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--cinza-claro);
+  border-radius: 16px;
+}
+
+.stats h2 {
+  color: var(--verde-palestina);
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.6rem;
+}
+
+.stat-card {
+  background-color: var(--branco-quente);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  color: var(--vermelho-vinho);
+  margin-bottom: 0.6rem;
+}
+
+.stat-card p {
+  font-size: 0.9rem;
+  color: var(--verde-oliva);
+}
+
+/* ================================ DESTAQUE FINAL ================================ */
+.destaque {
+  background-color: var(--verde-oliva);
+  color: var(--branco-quente);
+  text-align: center;
+  padding: 4rem 1.5rem;
+  border-radius: 16px;
+}
+
+.destaque h2 {
+  color: var(--branco-quente);
+}
+
+.destaque p {
+  margin: 1rem auto 2rem;
+  max-width: 700px;
+  font-size: 0.95rem;
+}

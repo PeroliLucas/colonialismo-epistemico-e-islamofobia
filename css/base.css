@@ -23,3 +23,52 @@ body {
   --vermelho-vinho-hover: #a51f24;
 }
 */
+
+
+/* ================================ ROOT — VARIÁVEIS ================================ */
+:root {
+  /* CORES */
+  --branco-quente: #f5f5f5;
+  --preto-profundo: #0b120e;
+  --verde-oliva: #0f1a13;
+  --vermelho-vinho: #c1272d;
+  --vermelho-vinho-hover: #a51f24;
+  --verde-palestina: #007a3d;
+
+/* ================================ COMPLEMENTARES ================================ */
+  --cinza-claro: #eaeaea;
+  --cinza-medio: #aaa;
+  --cinza-borda: #2a2a2a;
+
+  /* TIPOGRAFIA */
+  --fonte-titulo: "Playfair Display", serif;
+  --fonte-texto: "Inter", sans-serif;
+
+/* ================================ BOX-SHADOWS ================================ */
+    --sombra-leve: 0 2px 6px rgba(0, 0, 0, 0.15);
+    --sombra-moderada: 0 4px 14px rgba(0, 0, 0, 0.24);
+    --sombra-intensa: 0 8px 18px rgba(0, 0, 0, 0.30);
+}
+
+/* ================================ RESET E BASE ================================ */
+html {
+  background-color: var(--branco-quente);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--verde-oliva);
+  line-height: 1.6;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--vermelho-vinho);
+}

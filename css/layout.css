@@ -16,3 +16,46 @@ main {
 .section {
   padding: 60px 0;
 } */
+
+/* ================================ SEÇÕES GERAIS ================================ */
+.section {
+  max-width: 1000px;
+  margin: 4.5rem auto;
+  padding: 0 1.5rem;
+}
+
+.section h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+}
+
+/* ================================
+   HEADER FIXO
+   ================================ */
+header {
+  position: fixed;    
+  top: 0;               
+  left: 0;
+  width: 100%;          
+  z-index: 1000;        
+  background-color: var(--branco-quente); 
+  box-shadow: var(--sombra-leve);       
+}
+
+main.home {
+  padding-top: 16px; 
+}
+
+/* CARDS GERAIS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
