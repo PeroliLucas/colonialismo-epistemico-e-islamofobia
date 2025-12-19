@@ -1,0 +1,30 @@
+/*  ELEMENTOS/COMPONENTES REUTILIZÁVEIS (botões, cards, links, listas)*/
+
+/* 
+BOTÕES 
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn.primary {
+  background-color: var(--vermelho-vinho);
+  color: var(--branco-quente);
+}
+
+.btn.primary:hover {
+  background-color: var(--vermelho-vinho-hover);
+}
+
+CARDS
+.card {
+  background-color: var(--branco-quente);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+*/
