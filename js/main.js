@@ -232,21 +232,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================================
   // LINHA DO TEMPO PAG 3
   // ================================
-  const botoes = document.querySelectorAll(".marco .botao-analise");
+    const botoes = document.querySelectorAll(".botao-analise");
 
-  let marcoAtivo = null;
+      botoes.forEach(botao => {
+        botao.addEventListener("click", () => {
+          const marco = botao.closest(".marco");
+          const ativo = marco.classList.contains("ativo");
 
-  botoes.forEach((botao) => {
-    botao.addEventListener("click", () => {
-      const conteudo = botao.closest(".conteudo-marco");
+          // Fecha todos os marcos
+          document.querySelectorAll(".marco").forEach(m => {
+            m.classList.remove("ativo");
+            const b = m.querySelector(".botao-analise");
+            if (b) b.textContent = "Ver análise";
+          });
 
-      if (marcoAtivo && marcoAtivo !== conteudo) {
-        marcoAtivo.classList.remove("ativo");
-      }
-
-      conteudo.classList.toggle("ativo");
-
-      marcoAtivo = conteudo.classList.contains("ativo") ? conteudo : null;
-    });
-  });
+          // Se não estava ativo, abre
+          if (!ativo) {
+            marco.classList.add("ativo");
+            botao.textContent = "Ocultar análise";
+          }
+        });
+      });
 });

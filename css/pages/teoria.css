@@ -1,3 +1,44 @@
+/* ================================ ROOT — VARIÁVEIS DO PROJETO ================================ */
+:root {
+  /* CORES */
+  --branco-quente: #f5f5f5;
+  --preto-profundo: #0b120e;
+  --verde-oliva: #0f1a13;
+  --vermelho-vinho: #c1272d;
+  --vermelho-vinho-hover: #a51f24;
+  --verde-palestina: #007a3d;
+  --cinza-claro: #eaeaea;
+  --cinza-medio: #aaa;
+  --cinza-borda: #2a2a2a;
+  --laranja-suave: #f9a825;
+  /* TIPOGRAFIA */
+  --fonte-titulo: "Playfair Display", serif;
+  --fonte-texto: "Inter", sans-serif;
+}
+
+/* ================================ BASE ================================ */
+html {
+  background-color: var(--branco-quente);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--verde-oliva);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--vermelho-vinho);
+}
+
+/* ================================ HERO ================================ */
 .hero {
   background: linear-gradient(180deg, var(--verde-oliva), var(--preto-profundo));
   color: var(--branco-quente);
@@ -27,24 +68,154 @@
   opacity: 0.95;
 }
 
-.leitura-profunda h2::after {
-  content: "";
-  display: block;
-  width: 120px;
-  height: 3px;
-  background-color: var(--vermelho-vinho);
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
+/*
+PROGRESS BAR 
+*/
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--vermelho-vinho-hover);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.2s ease;
 }
 
-.timeline h2::after {
-  content: "";
+/* 
+GLOSSÁRIO
+*/
+.glossario {
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--vermelho-vinho);
+  border-bottom: 1px dashed var(--vermelho-vinho);
+  transition: all 0.3s ease;
+}
+
+.glossario:hover {
+  color: var(--verde-palestina);
+  border-bottom-color: var(--verde-palestina);
+}
+
+.glossario .tooltip {
+  display: none;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 120px;
+  max-width: 350px;
+  background-color: var(--verde-oliva);
+  color: #fff;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  white-space: normal;
+}
+
+.glossario.aberto .tooltip {
   display: block;
-  width: 60px;
-  height: 3px;
+}
+
+
+
+/* BOTÕES */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.7rem 1.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
   background-color: var(--vermelho-vinho);
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background-color: transparent;
+  border: 1px solid var(--vermelho-vinho);
+  color: var(--vermelho-vinho);
+}
+
+.btn.secondary {
+  border: 1px solid var(--vermelho-vinho);
+  color: var(--vermelho-vinho);
+}
+
+.btn.secondary:hover {
+  background-color: var(--vermelho-vinho);
+  color: #fff;
+}
+
+/* ================================ SEÇÕES GERAIS ================================ */
+.section {
+  max-width: 1000px;
+  margin: 4.5rem auto;
+  padding: 0 1.5rem;
+}
+
+.section h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+}
+
+/* ================================ CARDS ================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.card {
+  background-color: var(--branco-quente);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.24);
+  border-left: 4px solid var(--verde-oliva);
+  padding: 1.7rem;
+  border-left: 4px solid var(--verde-palestina);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.card h3 {
+  font-family: var(--fonte-titulo);
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--vermelho-vinho);
+  font-weight: 500;
 }
 
 /* ================================ DESTAQUE FINAL ================================ */
@@ -66,12 +237,343 @@
   font-size: 0.95rem;
 }
 
-/* ================================ HERO ================================ */
+/* ================================ SEÇÃO DE LEITURA PROFUNDA ================================ */
+.leitura-profunda {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.leitura-profunda strong {
+  color: var(--vermelho-vinho);
+  font-weight: 600;
+}
+
+.leitura-profunda h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.leitura-profunda h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background-color: var(--vermelho-vinho);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.leitura-profunda h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--verde-oliva);
+}
+
+.leitura-profunda p {
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+.leitura-profunda li {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  position: relative;
+}
+
+.leitura-profunda li::before {
+  content: "•";
+  color: var(--vermelho-vinho);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.leitura-profunda ul {
+  border-left: 3px solid var(--verde-palestina);
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.curiosidade {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background: var(--branco-quente);
+  border-left: 6px solid var(--verde-palestina);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curiosidade:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+  border-left: 6px solid var(--vermelho-vinho);
+}
+
+/* IMPACTOS SOCIAIS (ACCORDION) */
+.impactos-sociais .impactos {
+  background-color: var(--branco-quente);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-left: 5px solid var(--verde-palestina);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  padding: 1rem 1.5rem;
+}
+
+.impactos-sociais .impactos:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.impactos-sociais .impactos h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: var(--fonte-titulo);
+  color: var(--verde-palestina);
+  margin-bottom: 0.5rem;
+}
+
+.impactos-sociais .impactos p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 1.5rem;
+  line-height: 1.7;
+}
+
+.impactos-sociais .impactos.open p {
+  padding: 3rem 4.5rem;
+}
+
+/* TIMELINE */
+.timeline {
+  max-width: 900px;
+  margin: 4rem auto;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+.timeline h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--vermelho-vinho);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.timeline ul {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.timeline ul::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--verde-oliva);
+  border-radius: 2px;
+}
+
+/* ITENS DA TIMELINE */
+.timeline li {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.timeline li:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline li:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  width: 16px;
+  height: 16px;
+  background-color: var(--vermelho-vinho);
+  border: 4px solid var(--branco-quente);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 0 2px var(--verde-oliva);
+}
+
+.timeline li:nth-child(odd)::before {
+  right: -8px;
+}
+
+.timeline li:nth-child(even)::before {
+  left: -8px;
+}
+
+/* CONTEÚDO DOS ITENS */
+.timeline li .content {
+  background-color: var(--cinza-claro);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline li .content strong {
+  display: block;
+  color: var(--vermelho-vinho);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline li .content p {
+  margin: 0;
+  color: var(--verde-oliva);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.timeline li:hover .content {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.36);
+}
+
+/* ====== Abas / Tabs ====== */
+.tabs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  border: 2px solid #c1272d;
+  background: transparent;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #c1272d;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ====== Cards ====== */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card.conteudo {
+  background: #fefefe;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid var(--vermelho-vinho);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.conteudo:hover {
+  border-left: 5px solid var(--verde-palestina);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card.conteudo h3 {
+  margin-bottom: 0.7rem;
+}
+
+.card.conteudo p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ================================ CARDS DE AUTORES ================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card.autor {
+  background-color: var(--branco-quente);
+  border-left: 4px solid var(--vermelho-vinho);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.autor:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  border-left: 4px solid var(--verde-palestina);
+}
+
+.card.autor h3 {
+  font-family: var(--fonte-titulo);
+  margin-bottom: 0.5rem;
+  color: var(--verde-oliva);
+  text-align: center;
+}
+
+.card.autor p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ================================
+   HERO
+================================ */
 .hero.teoria {
   background: linear-gradient(180deg, var(--verde-oliva), var(--preto-profundo));
-  color: var(--branco-quente);
+  color: #fff;
   text-align: center;
-  padding: 6rem 1.5rem;
+  padding: 6rem 1rem;
 }
 
 .hero.teoria h1 {
@@ -86,7 +588,9 @@
   opacity: 0.9;
 }
 
-/* ================================ SEÇÕES TEXTUAIS ================================ */
+/* ================================
+   SEÇÕES TEXTUAIS
+================================ */
 .secao,
 .section.teoria-intro {
   max-width: 900px;
@@ -121,72 +625,9 @@
   color: #1c1c1c;
 }
 
-/* ================================ BOX DE DESTAQUE ================================ */
-.box-destaque,
-.box-destaque.humano {
-  max-width: 850px;
-  margin: 3rem auto;
-  padding: 1.6rem 2rem;
-  background-color: var(--branco-quente);
-  border-left: 6px solid var(--verde-palestina);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  font-style: italic;
-  text-align: center;
-  color: var(--verde-oliva);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.box-destaque:hover,
-.box-destaque.humano:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  border-left-color: var(--vermelho-vinho-hover);
-}
-
-.box-destaque strong {
-  display: block;
-  font-size: 1.4rem;
-  font-family: var(--fonte-titulo);
-  color: var(--vermelho-vinho);
-  margin-bottom: 0.8rem;
-}
-
-/* ================================ LISTAS ================================ */
-.secao ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 1.8rem 0 2.2rem;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.secao ul li {
-  position: relative;
-  padding-left: 1.4rem;
-  font-family: var(--fonte-texto);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #1c1c1c;
-}
-
-.secao ul li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 8px;
-  height: 2px;
-  background-color: var(--vermelho-vinho);
-  border-radius: 2px;
-}
-
-.secao.critica ul li {
-  color: var(--verde-oliva);
-  font-weight: 400;
-}
-
-/* ================================ TIMELINE ================================ */
+/*
+ TIMELINE 
+*/
 .linha-tempo {
   max-width: 900px;
   margin: 5rem auto;
@@ -293,112 +734,78 @@
   transform: translateX(-50%);
 }
 
-/* ================================ ACORDEON — IMPACTOS SOCIAIS ================================ */
-.impactos-sociais .impactos {
+/* ================================
+   BOX DE DESTAQUE
+================================ */
+.box-destaque,
+.box-destaque.humano {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 1.6rem 2rem;
   background-color: var(--branco-quente);
+  border-left: 6px solid var(--verde-palestina);
   border-radius: 12px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  border-left: 5px solid var(--verde-palestina);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  padding: 1rem 1.5rem;
-}
-
-.impactos-sociais .impactos:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
-}
-
-.impactos-sociais .impactos h3 {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-style: italic;
   text-align: center;
-  font-size: 1.6rem;
-  font-family: var(--fonte-titulo);
   color: var(--verde-oliva);
-  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.impactos-sociais .impactos p {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 1.5rem;
-  line-height: 1.7;
+.box-destaque:hover,
+.box-destaque.humano:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-left-color: var(--vermelho-vinho-hover);
 }
 
-.impactos-sociais .impactos.open p {
-  padding: 3rem 4.5rem;
-  max-height: 1000px; 
-}
-
-/* ================================ GLOSSÁRIO ================================ */
-.glossario {
-  position: relative;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--vermelho-vinho);
-  border-bottom: 1px dashed var(--vermelho-vinho);
-  transition: all 0.3s ease;
-}
-
-.glossario:hover {
-  color: var(--verde-palestina);
-  border-bottom-color: var(--verde-palestina);
-}
-
-.glossario .tooltip {
-  display: none;
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 120px;
-  max-width: 350px;
-  background-color: var(--verde-oliva);
-  color: #fff;
-  padding: 0.35rem 0.6rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  line-height: 1.3;
-  text-align: center;
-  z-index: 10;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  white-space: normal;
-}
-
-.glossario.aberto .tooltip {
+.box-destaque strong {
   display: block;
-}
-
-/* ================================ BOTÕES ================================ */
-.btn {
-  padding: 0.7rem 1.6rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.btn.primary {
-  background-color: var(--vermelho-vinho);
-  color: #fff;
-}
-
-.btn.primary:hover {
-  background-color: transparent;
-  border: 1px solid var(--vermelho-vinho);
+  font-size: 1.4rem;
+  font-family: var(--fonte-titulo);
   color: var(--vermelho-vinho);
+  margin-bottom: 0.8rem;
 }
 
-.btn.secondary {
-  border: 1px solid var(--vermelho-vinho);
-  color: var(--vermelho-vinho);
+/* ================================
+   LISTAS
+================================ */
+.secao ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.8rem 0 2.2rem;
+  display: grid;
+  gap: 0.85rem;
 }
 
-.btn.secondary:hover {
+.secao ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: var(--fonte-texto);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #1c1c1c;
+}
+
+.secao ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 2px;
   background-color: var(--vermelho-vinho);
-  color: #fff;
+  border-radius: 2px;
 }
 
+.secao.critica ul li {
+  color: var(--verde-oliva);
+  font-weight: 400;
+}
+
+/* ================================
+   SEÇÃO ESTEREÓTIPOS
+================================ */
 .secao.estereotipos {
   max-width: 1000px;
   margin: 5rem auto;
@@ -507,6 +914,16 @@
   text-align: center;
 }
 
+/* ================================
+   SUBTÍTULOS
+================================ */
+.secao h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-family: var(--fonte-titulo);
+  color: var(--verde-oliva);
+}
 
 /* ================================
    NAVEGAÇÃO INTERNA
@@ -534,175 +951,621 @@
   color: #fff;
   transform: translateX(6px);
 }
-/* ================================ TIMELINE MINIMALISTA ================================ */
+
+
+/* =========================================================
+   PÁGINA: INTERSECÇÕES
+   Escopo seguro — não afeta outras páginas
+========================================================= */
+
+/* ==============================
+   HERO
+============================== */
+
+.hero.hero-teoria {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero.hero-teoria::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.06),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.hero.hero-teoria h1 {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero.hero-teoria p {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ==============================
+   LEITURA PROFUNDA — RITMO
+============================== */
+
+.section.leitura-profunda {
+  position: relative;
+}
+
+.section.leitura-profunda h2 {
+  margin-bottom: 1.4rem;
+}
+
+.section.leitura-profunda p {
+  margin-bottom: 1.6rem;
+}
+
+.section.leitura-profunda p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==============================
+   BOX DE DESTAQUE
+============================== */
+
+.box-destaque,
+.box-destaque.humano {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 122, 61, 0.08),
+    transparent
+  );
+}
+
+.box-destaque.humano p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+/* ==============================
+   MIGRAÇÃO — ACCORDION
+============================== */
+
+.impactos-sociais {
+  margin-top: 4rem;
+}
+
+.impactos-sociais > p {
+  max-width: 850px;
+  margin-bottom: 2.8rem;
+}
+
+/* Card base */
+.impactos-sociais .impactos {
+  background: linear-gradient(
+    135deg,
+    var(--branco-quente),
+    #fafafa
+  );
+  border-left: 6px solid var(--verde-palestina);
+  border-radius: 18px;
+  margin-bottom: 1.8rem;
+  padding: 2rem 2.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Hover */
+.impactos-sociais .impactos:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
+
+/* Indicador */
+.impactos-sociais .impactos::after {
+  content: "+";
+  position: absolute;
+  right: 2.2rem;
+  top: 1.9rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--vermelho-vinho);
+  transition: transform 0.3s ease;
+}
+
+/* Título */
+.impactos-sociais .impactos h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.45rem;
+  margin-bottom: 0;
+  max-width: 90%;
+}
+
+/* Conteúdo fechado */
+.impactos-sociais .impactos p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+  transition:
+    max-height 0.55s ease,
+    opacity 0.4s ease,
+    padding 0.4s ease;
+}
+
+/* Estado aberto */
+.impactos-sociais .impactos.open {
+  border-left-color: var(--vermelho-vinho);
+}
+
+.impactos-sociais .impactos.open::after {
+  content: "–";
+  transform: rotate(180deg);
+}
+
+.impactos-sociais .impactos.open p {
+  max-height: 1000px;
+  opacity: 1;
+  padding-top: 1.6rem;
+  line-height: 1.85;
+}
+
+/* ==============================
+   EXPERIÊNCIAS ATRAVESSADAS
+============================== */
+
+.section.leitura-profunda:last-of-type {
+  margin-bottom: 3rem;
+}
+
+/* ==============================
+   CONCLUSÃO
+============================== */
+
+.section.conclusao {
+  background-color: var(--cinza-claro);
+  border-radius: 22px;
+  padding: 3.5rem 2.5rem;
+}
+
+.section.conclusao h2 {
+  text-align: center;
+}
+
+.section.conclusao p {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==============================
+   NAVEGAÇÃO INTERNA
+============================== */
+
+.navegacao-interna {
+  border-top: 1px solid var(--cinza-borda);
+  padding-top: 2.8rem;
+}
+
+.navegacao-interna a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================================
+   INTERSEÇÕES — MAPA CONCEITUAL
+========================================================= */
+
+.interseccoes {
+  max-width: 980px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+}
+
+.interseccoes h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.interseccoes h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--vermelho-vinho);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+.interseccoes .descricao {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
+  color: rgba(255,255,255,0.75);
+}
+
+/* LISTA */
+.interseccoes ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+/* ITEM */
+.interseccoes li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* MARCA VISUAL (NÃO É PONTO DE TEMPO) */
+.interseccoes li::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--vermelho-vinho);
+  border-radius: 3px;
+  margin-top: 0.35rem;
+  box-shadow: 0 0 0 4px rgba(193,39,45,0.15);
+}
+
+/* CONTEÚDO */
+.interseccoes .content {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--verde-oliva);
+  padding: 1.4rem 1.6rem;
+  border-radius: 10px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.interseccoes .content strong {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vermelho-vinho);
+  margin-bottom: 0.6rem;
+}
+
+.interseccoes .content p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.9);
+}
+
+.interseccoes li:hover .content {
+  transform: translateX(4px);
+  background: rgba(255,255,255,0.06);
+}
+
+/* =========================================================
+   SEÇÃO DE CONTEXTO
+========================================================= */
+#contexto-midia {
+  max-width: 900px;
+  margin: 4rem auto 2rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+#contexto-midia h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  color: var(--verde-oliva);
+}
+
+#contexto-midia p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1c1c1c;
+}
+
+/* =========================================================
+   CONTEXTO MUÇULMANO
+========================================================= */
+#contexto-muculmano {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+#contexto-muculmano h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--verde-oliva);
+}
+
+#contexto-muculmano p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1c1c1c;
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   MANCHETES / SLIDES
+========================================================= */
+#manchetes {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+#manchetes h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--vermelho-vinho);
+  text-align: center;
+}
+
+.slide {
+  background-color: var(--branco-quente);
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+}
+
+.slide h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--verde-oliva);
+}
+
+.slide p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #1c1c1c;
+}
+
+/* =========================================================
+   ASIDE DE IMPACTO
+========================================================= */
+#impacto {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 1.8rem 2rem;
+  background-color: var(--verde-oliva);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+#impacto h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#impacto p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   DESENVOLVIMENTO DO TEMA
+========================================================= */
+#desenvolvimento {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+#desenvolvimento h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: var(--verde-oliva);
+}
+
+#desenvolvimento p {
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 1.3rem;
+  color: #1c1c1c;
+}
+
+/* =========================================================
+   CONCLUSÃO
+========================================================= */
+#conclusao {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--cinza-claro);
+  border-radius: 16px;
+}
+
+#conclusao h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--vermelho-vinho);
+}
+
+#conclusao p {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   LINK PARA OUTRAS PÁGINAS
+========================================================= */
+#outras-pages {
+  max-width: 900px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+#outras-pages h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--verde-oliva);
+  text-align: center;
+}
+
+#outras-pages ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+#outras-pages ul li a {
+  font-size: 1rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: 12px;
+  background-color: var(--branco-quente);
+  border: 1px solid var(--verde-oliva);
+  color: var(--verde-oliva);
+  transition: all 0.3s ease;
+}
+
+#outras-pages ul li a:hover {
+  background-color: var(--verde-palestina);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   TIMELINE — ENSAIO CRÍTICO 
+========================================================= */
 
 .linha-tempo-islamofobia {
-  padding: 80px 20px;
   background-color: var(--branco-quente);
+  padding: 5rem 1.5rem 6rem;
 }
 
+/* TÍTULO */
 .linha-tempo-islamofobia h2 {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  max-width: 780px;
+  margin: 0 auto 1.2rem;
+  font-family: var(--fonte-destaque);
+  font-size: 2.4rem;
   color: var(--preto-profundo);
-  margin-bottom: 20px;
 }
 
-.linha-tempo-islamofobia .conteudo-marco h3 {
-   color: var(--vermelho-vinho-hover);
-}
-
-.linha-tempo-islamofobia p.descricao-linha-tempo {
-    text-align: left;
-}
-
-.linha-tempo-islamofobia strong {
-    color: var(--vermelho-vinho-hover);   
-}
-
+/* DESCRIÇÃO */
 .descricao-linha-tempo {
-  text-align: center;
-  font-size: 1.1rem;
-  max-width: 800px;
-  margin: 0 auto 60px auto;
-  color: #444;
-  line-height: 1.6;
+  max-width: 780px;
+  margin: 0 auto 4rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(11, 18, 14, 0.85);
 }
 
-/* CONTAINER CENTRAL */
+/* CONTAINER */
 .container-timeline {
-  position: relative;
-  max-width: 900px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 0 20px;
+  position: relative;
+  padding-left: 3.2rem;
 }
 
-/* LINHA CENTRAL FININHA */
+/* LINHA VERTICAL */
 .container-timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background-color: #ccc;
-  transform: translateX(-50%);
+  left: 10px;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(15, 26, 19, 0.35);
 }
 
-/* MARCOS */
+/* MARCO */
 .marco {
   position: relative;
-  width: 50%;
-  padding: 20px 30px;
-  box-sizing: border-box;
-  margin-bottom: 60px;
+  margin-bottom: 3.8rem;
+  padding-left: 1.6rem;
 }
 
-.marco-esquerda {
-  left: 0;
-  text-align: right;
-}
-
-.marco-direita {
-  left: 50%;
-  text-align: left;
+/* BOLINHA VERDE */
+.marco::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 0.45rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--verde-palestina);
+  border-radius: 50%;
 }
 
 /* ANO */
 .ano-marco {
   display: block;
-  font-weight: 600;
-  color: var(--vermelho-vinho);
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--vermelho-vinho-hover);
 }
 
-/* CONTEÚDO DO MARCO */
-.conteudo-marco {
-  background-color: #f9f9f9;
-  color: #222;
-  padding: 18px 20px;
-  border-radius: 8px;
-  border-left: 3px solid var(--verde-oliva);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
+/* CONTEÚDO */
 .conteudo-marco h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-  color: var(--preto-profundo);
+  font-family: var(--fonte-destaque);
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+  color: var(--verde-oliva);
 }
 
 .conteudo-marco p {
-  margin: 8px 0;
-  line-height: 1.5;
   font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(11, 18, 14, 0.9);
 }
 
-/* BOLINHA NA LINHA */
-.marco::before {
-  content: '';
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background-color: var(--verde-oliva);
-  border: 2px solid #fff;
-  border-radius: 50%;
-  top: 20px;
-  z-index: 2;
-}
-
-.marco-esquerda::before {
-  right: -7px;
-}
-
-.marco-direita::before {
-  left: -7px;
-}
-
-/* CONTEXTO EXTRA */
-.contexto-marco {
-  display: none;
-  margin-top: 10px;
-  padding: 12px;
-  font-size: 0.95rem;
-  color: #555;
-  background-color: #eee;
-  border-radius: 6px;
-}
-
-
-[data-aos="fade-up"].aos-animate .conteudo-marco {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.contexto-marco {
-  display: none;
-  padding-top: 0.5rem;
-  font-size: 0.95rem;
-  color: #333;
-  transition: all 0.3s ease;
-}
-
-.conteudo-marco.ativo .contexto-marco {
-  display: block;
-}
-
+/* BOTÃO */
 .botao-analise {
-  margin-top: 0.5rem;
-  background-color: var(--vermelho-vinho);
-  color: #fff;
+  background: none;
   border: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vermelho-vinho);
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.3s ease;
 }
 
-.botao-analise:hover {
-  background-color: var(--vermelho-vinho-hover);
+/* TEXTO OCULTO */
+.contexto-marco {
+  display: none;
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(11, 18, 14, 0.95);
+}
+
+/* ATIVO */
+.marco.ativo .contexto-marco {
+  display: block;
 }
