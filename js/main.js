@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       new Chart(document.getElementById("chart2"), {
         type: "line",
         data: {
-          labels: ["2018", "2019", "2020", "2021"],
+          labels: ["2018", "2019", "2020", "2021", "2022", "2023", "2024"],
           datasets: [
             {
               label: "Estudos sobre colonialismo epistêmico",
